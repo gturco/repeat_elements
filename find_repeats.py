@@ -18,7 +18,7 @@ def find_repeats(fastafile,outfile):
         rep_pos = [repeat.span() for repeat in repeat_reagions]
         d[chrm].append(rep_pos)
         name = "{0}_{1}_{2}".format(chrm,rep_pos[0], rep_pos[1])
-        out.write("{0}\t{1}\t{2}\t{4}\t".format(chrm,rep_pos[0],rep_pos[1],name))
+        out.write("{0}\t{1}\t{2}\t{3}\n".format(chrm,rep_pos[0],rep_pos[1],name))
     out.close()
     return d
 
