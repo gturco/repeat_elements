@@ -16,9 +16,10 @@ def find_repeats(fastafile,outfile):
         #repeat_reagions = re.finditer("X{1,}",chrm_str, flags=re.IGNORECASE)
         repeat_reagions = re.finditer("[a-z]{1,}",chrm_str)
         rep_pos = [repeat.span() for repeat in repeat_reagions]
-        d[chrm].append(rep_pos)
-        name = "{0}_{1}_{2}".format(chrm,rep_pos[0], rep_pos[1])
-        out.write("{0}\t{1}\t{2}\t{3}\n".format(chrm,rep_pos[0],rep_pos[1],name))
+        for rep in rep_pos:
+            d[chrm].append(rep)
+            name = "{0}_{1}_{2}".format(chrm,rep[0], rep[1])
+            out.write("{0}\t{1}\t{2}\t{3}\n".format(chrm,rep[0],rep[1],name))
     out.close()
     return d
 
